@@ -1,3 +1,5 @@
+This project is a fork of [raycast/extensions/chatgpt](https://github.com/raycast/extensions/tree/main/extensions/chatgpt). I have made changes to support users with existing LiteLLM configurations to allow for multiple providers. See the [unified-ai](https://github.com/TanGentleman/unified-ai) for helpful migration scripts.
+
 <p align="center">
 <img width=100 src="https://github.com/abielzulio/chatgpt-raycast/blob/main/assets/icon@dark.png?raw=true">
 </p>
