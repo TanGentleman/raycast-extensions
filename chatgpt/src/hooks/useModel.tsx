@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState, useRef } from "react";
 import { Model, ModelHook } from "../type";
 import { getConfiguration, useChatGPT } from "./useChatGPT";
 import { useProxy } from "./useProxy";
+import { MODEL_LIST } from "../manifest";
 
 export const DEFAULT_MODEL: Model = {
   id: "default",
@@ -12,9 +13,10 @@ export const DEFAULT_MODEL: Model = {
   prompt: "You are a helpful assistant.",
   option: "gpt-4o-mini",
   temperature: "1",
-  pinned: false,
-  vision: false,
+  pinned: true,
+  vision: true,
 };
+// export const DEFAULT_MODEL = MODEL_LIST[0];
 
 export function useModel(): ModelHook {
   const [data, setData] = useState<Model[]>([]);
@@ -78,13 +80,15 @@ export function useModel(): ModelHook {
 
   useEffect(() => {
     (async () => {
-      const storedModels = await LocalStorage.getItem<string>("models");
+      setData(MODEL_LIST);
+      // setData([DEFAULT_MODEL]);
+      // const storedModels = await LocalStorage.getItem<string>("models");
 
-      if (!storedModels || storedModels === "[]") {
-        setData([DEFAULT_MODEL]);
-      } else {
-        setData(JSON.parse(storedModels));
-      }
+      // if (!storedModels || storedModels === "[]") {
+      //   setData([DEFAULT_MODEL]);
+      // } else {
+      //   setData(JSON.parse(storedModels));
+      // }
       setLoading(false);
       isInitialMount.current = false;
     })();

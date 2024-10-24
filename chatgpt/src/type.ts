@@ -39,6 +39,7 @@ export interface Model {
   temperature: string;
   pinned: boolean;
   vision?: boolean;
+  base_url?: string;
 }
 
 type PromiseFunctionNoArg = () => Promise<void>;
